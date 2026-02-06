@@ -1,0 +1,169 @@
+/*斬首css*/
+
+/* タイトルロゴ */
+.title {
+  display: block;              /* ブロックにして中央寄せ */
+  margin: 16px auto;           /* 上下マージンで余白 */
+  max-width: 80%;              /* 画面幅に合わせて縮小 */
+  height: auto;                /* 縦横比維持 */
+}
+
+/* ホーム（ユーザ5人） */
+.home {
+  height: calc(100dvh - 96px); /* タイトル分の高さを引く */
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+}
+
+/* ユーザ行 */
+.user {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+
+  text-decoration: none;
+  color: inherit;
+}
+
+.user-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+
+.user-info .user-name {
+  font-weight: 600;
+}
+
+.user-info .user-meta {
+  font-size: 12px;
+  color: #888;
+}
+
+/* タップ時フィードバック */
+.user:active {
+  background-color: #f2f2f2;
+}
+
+.user:focus-visible {
+  outline: 2px solid #4a90e2;
+}
+
+
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;       /* スマホ用に小さめ */
+  text-decoration: none;
+  color: #333;
+}
+
+.user-icon {
+  width: 60px;
+  height: 60px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin-bottom: 4px;
+}
+
+.user-name {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* PC用に拡大 */
+@media screen and (min-width: 600px) {
+  .user {
+    width: 100px;
+  }
+  .user-icon {
+    width: 80px;
+    height: 80px;
+  }
+  .user-name {
+    font-size: 1rem;
+  }
+}
+
+
+
+
+
+
+/* ===== 全体 ===== */
+body {
+  margin: 0;
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic Pro", sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+header {
+  background-color: #222;
+  color: #fff;
+  padding: 16px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+/* ===== ユーザ選択 ===== */
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
+}
+
+.user-icon {
+  width: 60px;
+  height: 60px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin-bottom: 4px;
+}
+
+.user-name {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* ===== PC用拡大 ===== */
+@media screen and (min-width: 600px) {
+  .user {
+    width: 100px;
+  }
+  .user-icon {
+    width: 80px;
+    height: 80px;
+  }
+  .user-name {
+    font-size: 1rem;
+  }
+}

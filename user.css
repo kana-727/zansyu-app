@@ -1,0 +1,124 @@
+/* ===== 全体設定 ===== */
+body {
+  margin: 0;
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic Pro", sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+header {
+  background-color: #222;
+  color: #fff;
+  padding: 16px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+/* ===== OC一覧 ===== */
+#oc-section {
+  padding: 16px;
+}
+
+.oc-list {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, 1fr); /* 横4列固定 */
+}
+
+/* ===== OCカード ===== */
+.oc-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.oc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.oc-card img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;       /* 高さ制限 */
+  object-fit: contain;      /* つぶさず収める */
+  background-color: #eee;
+}
+
+.oc-card p {
+  margin: 8px 0;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* ===== OC数によるクラス調整は不要 ===== */
+/* .few, .medium, .many は無視してOK */
+
+/* ===== レスポンシブ（スマホでも4列） ===== */
+@media screen and (max-width: 600px) {
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  .oc-list {
+    grid-template-columns: repeat(4, 1fr); /* スマホでも4列固定 */
+  }
+
+  .oc-card p {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;       /* スマホ用に小さめ */
+  text-decoration: none;
+  color: #333;
+}
+
+.user-icon {
+  width: 60px;
+  height: 60px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin-bottom: 4px;
+}
+
+.user-name {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* PC用に拡大 */
+@media screen and (min-width: 600px) {
+  .user {
+    width: 100px;
+  }
+  .user-icon {
+    width: 80px;
+    height: 80px;
+  }
+  .user-name {
+    font-size: 1rem;
+  }
+}

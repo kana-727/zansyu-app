@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ユーザ画面</title>
+  <link rel="stylesheet" href="usercss/user.css" />
+</head>
+<body>
+
+  <header>
+    <h1 id="user-name">ユーザ名</h1>
+  </header>
+
+  <main>
+    <section id="oc-section">
+      <div id="oc-list" class="oc-list">
+        <!-- OCカードがJSで入る -->
+      </div>
+    </section>
+  </main>
+
+  <script>
+    /* =====================
+       ユーザID取得
+    ===================== */
+    const params = new URLSearchParams(location.search);
+    const userId = params.get("userId");
+
+    /* =====================
+       仮データ
+    ===================== */
+    const users = {
+      1: { name: "ろつ" },
+      2: { name: "おかき" },
+      3: { name: "なす" },
+      4: { name: "しらい" },
+      5: { name: "ちょこ" }
+    };
+
+    const ocData = {
+      1: [
+        { id: 101, name: "OC-A", img: "img/oc/a.jpg" },
+        { id: 102, name: "OC-B", img: "img/oc/b.jpg" }
+      ],
+      2: [
+        { id: 201, name: "OC-C", img: "img/oc/c.jpg" },
+        { id: 202, name: "OC-D", img: "img/oc/d.jpg" },
+        { id: 203, name: "OC-E", img: "img/oc/e.jpg" }
+      ],
+
+      5: [
+        { id: 505, name: "蛇目さいか", img: "ちょこ/OCimg/アマネ.jpg"},
+        { id: 504, name: "愛徳れみ", img: "ちょこ/OCimg/アマネ.jpg"},
+        { id: 503, name: "御城美夜子", img: "ちょこ/OCimg/アマネ.jpg"},
+        { id: 502, name: "ひより", img: "ちょこ/OCimg/アマネ.jpg"},
+        { id: 501, name: "島枝勇儀", img: "ちょこ/OCimg/アマネ.jpg"}
+      ]
+    };
+
+    /* =====================
+       ユーザ名表示
+    ===================== */
+    const user = users[userId];
+    document.getElementById("user-name").textContent = user.name;
+
+    /* =====================
+       OC一覧描画
+    ===================== */
+    const ocList = ocData[userId] || [];
+    const ocListEl = document.getElementById("oc-list");
+
+    // OC数でクラス切り替え
+    if (ocList.length <= 2) {
+      ocListEl.classList.add("few");
+    } else if (ocList.length <= 4) {
+      ocListEl.classList.add("medium");
+    } else {
+      ocListEl.classList.add("many");
+    }
+
+    ocList.forEach(oc => {
+      const card = document.createElement("div");
+      card.className = "oc-card";
+      card.innerHTML = `
+        <img src="${oc.img}" alt="${oc.name}">
+        <p>${oc.name}</p>
+      `;
+
+      // 詳細画面へ
+      card.addEventListener("click", () => {
+        location.href = `saika.html?userId=${userId}&ocId=${oc.id}`;
+      });
+
+      ocListEl.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>
